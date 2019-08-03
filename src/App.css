@@ -19,9 +19,28 @@ button {
   margin-top: 6rem;
 }
 
-.stockInfo {
+.stock {
+  min-width: 350px;
   padding: 1rem;
-  margin: 0.5rem 0;
+  margin: 0.5rem 1rem;
   border: 2px solid lightslategrey;
   border-radius: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .stock {
+    width: calc(100% -1rem);
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  #stocks {
+    display: flex;
+  }
+
+  .stock {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }

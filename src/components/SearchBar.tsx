@@ -7,12 +7,13 @@ const SearchBar = (props: any) => {
   const onSubmit = (e: any) => {
     e.preventDefault();
     if (searchText !== "") {
-      props.search(searchText);
+      props.add(searchText);
+
       setSearchText("");
     }
   };
 
-  const onChange = (e: any) => {
+  const onTextChange = (e: any) => {
     setSearchText(e.target.value);
   };
 
@@ -21,7 +22,7 @@ const SearchBar = (props: any) => {
       <Form.Field>
         <Form.Input
           value={searchText}
-          onChange={onChange}
+          onChange={onTextChange}
           placeholder="Search for any NASDAQ stock ticker"
         />
         <Button onClick={onSubmit} color="blue" floated="right">

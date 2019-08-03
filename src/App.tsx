@@ -7,7 +7,7 @@ import { Container } from "semantic-ui-react";
 const App: React.FC = () => {
   const [addedStocks, setAddedStocks] = useState<any>([]);
 
-  const search = (searchText: string) => {
+  const add = (searchText: string) => {
     if (!addedStocks.includes(searchText)) {
       setAddedStocks([...addedStocks, searchText]);
     } else {
@@ -18,9 +18,9 @@ const App: React.FC = () => {
   return (
     <div id="main-content">
       <Container>
-        <SearchBar search={search} />
+        <SearchBar add={add} />
         <div id="stocks">
-          {addedStocks.map((stock: string) => (
+          {addedStocks.map((stock: any) => (
             <StockInfo ticker={stock} key={stock} />
           ))}
         </div>

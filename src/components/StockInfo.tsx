@@ -34,7 +34,7 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
 
   if (apiData !== undefined) {
     return (
-      <div className="stockInfo">
+      <div className="stock">
         <Header as="h1">{apiData.companyName}</Header>
         <ul>
           <li>Current price: ${apiData.latestPrice}</li>
