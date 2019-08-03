@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import axios from "axios";
-import { Container, Header } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 
-const StockInfo: React.FC = () => {
+interface IProps {
+  ticker: string;
+}
+
+const StockInfo: React.FC<IProps> = (props: IProps) => {
   const [apiCalled, setApiCalled] = useState(false);
   const [apiData, setApiData] = useState();
 
-  const fetchData: Function = async () => {
+  const fetchData: Function = async (ticker: string) => {
     const res = await axios.get(
-      `https://cloud.iexapis.com/stable/stock/aapl/quote?token=${
+      `https://cloud.iexapis.com/stable/stock/${ticker}/quote?token=${
         process.env.REACT_APP_CLIENT_ID
       }`
     );
 
     console.log("API CALLED");
+    console.log(res);
 
     if (res.status === 200) {
       setApiCalled(true);
@@ -22,23 +27,23 @@ const StockInfo: React.FC = () => {
       setApiCalled(false);
     }
   };
-  if (!apiCalled) {
-    fetchData();
+
+  if (!apiCalled && props.ticker !== "") {
+    fetchData(props.ticker);
   }
+
   if (apiData !== undefined) {
     return (
-      <Container>
-        <Header as="h1" border-color="green">
-          {apiData.companyName}
-        </Header>
+      <Fragment>
+        <Header as="h1">{apiData.companyName}</Header>
         <ul>
           <li>Current price: ${apiData.latestPrice}</li>
           <li>Market Cap: ${apiData.marketCap}</li>
           <li>P/E ratio: {apiData.peRatio}</li>
-          <li>52 week high: {apiData.week52High}</li>
-          <li>52 week low: {apiData.week52Low}</li>
+          <li>52 week high: ${apiData.week52High}</li>
+          <li>52 week low: ${apiData.week52Low}</li>
         </ul>
-      </Container>
+      </Fragment>
     );
   } else {
     return null;
