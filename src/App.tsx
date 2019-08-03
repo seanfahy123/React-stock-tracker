@@ -5,17 +5,25 @@ import StockInfo from "./components/StockInfo";
 import { Container } from "semantic-ui-react";
 
 const App: React.FC = () => {
-  const [searchStock, setSearchStock] = useState("");
+  const [addedStocks, setAddedStocks] = useState<any>([]);
 
   const search = (searchText: string) => {
-    setSearchStock(searchText);
+    if (!addedStocks.includes(searchText)) {
+      setAddedStocks([...addedStocks, searchText]);
+    } else {
+      console.log("This has already been added");
+    }
   };
 
   return (
     <div id="main-content">
       <Container>
         <SearchBar search={search} />
-        <StockInfo ticker={searchStock} />
+        <div id="stocks">
+          {addedStocks.map((stock: string) => (
+            <StockInfo ticker={stock} key={stock} />
+          ))}
+        </div>
       </Container>
     </div>
   );

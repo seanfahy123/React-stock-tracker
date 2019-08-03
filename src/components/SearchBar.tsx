@@ -19,15 +19,15 @@ const SearchBar = (props: any) => {
   return (
     <Form>
       <Form.Field>
-        <input
+        <Form.Input
           value={searchText}
           onChange={onChange}
-          placeholder="Search for any stock ticker"
+          placeholder="Search for any NASDAQ stock ticker"
         />
+        <Button onClick={onSubmit} color="blue" floated="right">
+          Add
+        </Button>
       </Form.Field>
-      <Button onClick={onSubmit} color="blue" floated="right">
-        Add
-      </Button>
     </Form>
   );
 };

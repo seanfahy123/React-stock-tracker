@@ -14,3 +14,14 @@ h1 {
 button {
   width: 100%;
 }
+
+#stocks {
+  margin-top: 6rem;
+}
+
+.stockInfo {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 2px solid lightslategrey;
+  border-radius: 1rem;
+}

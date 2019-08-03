@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Header } from "semantic-ui-react";
 
@@ -34,7 +34,7 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
 
   if (apiData !== undefined) {
     return (
-      <Fragment>
+      <div className="stockInfo">
         <Header as="h1">{apiData.companyName}</Header>
         <ul>
           <li>Current price: ${apiData.latestPrice}</li>
@@ -43,7 +43,7 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
           <li>52 week high: ${apiData.week52High}</li>
           <li>52 week low: ${apiData.week52Low}</li>
         </ul>
-      </Fragment>
+      </div>
     );
   } else {
     return null;
