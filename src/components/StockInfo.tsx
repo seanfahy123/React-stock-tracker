@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Header } from "semantic-ui-react";
 
@@ -7,7 +7,6 @@ interface IProps {
 }
 
 const StockInfo: React.FC<IProps> = (props: IProps) => {
-  const [apiCalled, setApiCalled] = useState(false);
   const [apiData, setApiData] = useState();
 
   const fetchData: Function = async (ticker: string) => {
@@ -17,20 +16,17 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
       }`
     );
 
-    console.log("API CALLED");
-    console.log(res);
-
     if (res.status === 200) {
-      setApiCalled(true);
       setApiData(res.data);
-    } else {
-      setApiCalled(false);
     }
   };
 
-  if (!apiCalled && props.ticker !== "") {
-    fetchData(props.ticker);
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      fetchData(props.ticker);
+    }, 5000);
+    return () => clearInterval(timer);
+  });
 
   if (apiData !== undefined) {
     return (

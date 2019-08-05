@@ -9,7 +9,7 @@ const App: React.FC = () => {
 
   const add = (searchText: string) => {
     if (!addedStocks.includes(searchText)) {
-      setAddedStocks([...addedStocks, searchText]);
+      setAddedStocks([...addedStocks, { ticker: searchText }]);
     } else {
       console.log("This has already been added");
     }
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         <SearchBar add={add} />
         <div id="stocks">
           {addedStocks.map((stock: any) => (
-            <StockInfo ticker={stock} key={stock} />
+            <StockInfo ticker={stock.ticker} key={stock.ticker} />
           ))}
         </div>
       </Container>

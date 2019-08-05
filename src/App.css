@@ -1,5 +1,4 @@
 ul {
-  text-decoration: none;
   list-style: none;
 }
 
@@ -20,27 +19,28 @@ button {
 }
 
 .stock {
-  min-width: 350px;
+  min-width: 300px;
   padding: 1rem;
   margin: 0.5rem 1rem;
   border: 2px solid lightslategrey;
   border-radius: 1rem;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   .stock {
     width: calc(100% -1rem);
     margin-bottom: 1.5rem;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
   #stocks {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
   }
 
   .stock {
-    width: 100%;
     margin-bottom: 1rem;
   }
 }
