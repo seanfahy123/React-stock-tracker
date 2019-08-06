@@ -1,26 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import StockInfo from "./components/StockInfo";
 import { Container } from "semantic-ui-react";
 import { connect } from "react-redux";
+import updateStock from "./actions/stockActions";
 
 interface IProps {
   stocks: any;
+  updateStock: any;
 }
 
 const App: React.FC<IProps> = (props: IProps) => {
-  const [addedStocks, setAddedStocks] = useState<any>([] as object[]);
-
   const add = (searchText: string, searchQuantity: number) => {
     console.log(
       "new stock, ticker: " + searchText + " quantity: " + searchQuantity
     );
-    if (!addedStocks.includes(searchText)) {
-      setAddedStocks([...addedStocks, { ticker: searchText }]);
-    } else {
-      console.log("This has already been added");
-    }
+    props.updateStock(searchText, searchQuantity);
   };
 
   if (props.stocks) {
@@ -49,4 +45,15 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    updateStock: (ticker: string, quantity: number) => {
+      dispatch(updateStock(ticker, quantity));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

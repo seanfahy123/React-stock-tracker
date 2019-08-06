@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "semantic-ui-react";
+import Loading from "./Loading";
 
 interface IProps {
   ticker: string;
@@ -39,7 +40,7 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
     return (
       <Card className="stock" fluid={true}>
         <Card.Content>
-          <Card.Header as="h1">{apiData.companyName}</Card.Header>
+          <Card.Header>{apiData.companyName}</Card.Header>
           <div id="stockInfo">
             <div>
               <Card.Description>
@@ -68,7 +69,7 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
       </Card>
     );
   } else {
-    return null;
+    return <Loading />;
   }
 };
 

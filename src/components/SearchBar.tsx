@@ -19,8 +19,6 @@ const SearchBar = (props: IProps) => {
     ) {
       console.log("this would be submitted");
       props.add(searchText, searchQuantity);
-      setSearchText("");
-      setSearchQuantity(undefined);
     }
   };
 
@@ -42,7 +40,7 @@ const SearchBar = (props: IProps) => {
         onChange={onQuantityChange}
         placeholder="Add quantity of the chosen stock"
       />
-      <Button onClick={onSubmit} color="blue">
+      <Button onClick={onSubmit} color="blue" fluid>
         Add
       </Button>
     </Form>

@@ -1,25 +1,26 @@
-ul {
-  list-style: none;
-}
-
-h1 {
-  text-align: center;
-}
-
 #main-content {
   margin-top: 1rem;
 }
 
-button {
-  width: 100%;
-}
-
 #stocks {
-  margin-top: 6rem;
   width: 100%;
+  margin-top: 2rem;
 }
 
 #stockInfo {
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#loading {
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  margin-top: 2rem;
+}
+
+#loadingSvg {
+  width: 60px;
+  height: 60px;
 }
