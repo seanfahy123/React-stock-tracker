@@ -16,31 +16,10 @@ button {
 
 #stocks {
   margin-top: 6rem;
+  width: 100%;
 }
 
-.stock {
-  min-width: 300px;
-  padding: 1rem;
-  margin: 0.5rem 1rem;
-  border: 2px solid lightslategrey;
-  border-radius: 1rem;
-}
-
-@media (max-width: 800px) {
-  .stock {
-    width: calc(100% -1rem);
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media (min-width: 800px) {
-  #stocks {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-  }
-
-  .stock {
-    margin-bottom: 1rem;
-  }
+#stockInfo {
+  display: flex;
+  justify-content: space-around;
 }

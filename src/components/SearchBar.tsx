@@ -1,15 +1,26 @@
 import React, { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 
-const SearchBar = (props: any) => {
+interface IProps {
+  add: Function;
+}
+
+const SearchBar = (props: IProps) => {
   const [searchText, setSearchText] = useState("");
+  const [searchQuantity, setSearchQuantity] = useState();
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    if (searchText !== "") {
-      props.add(searchText);
 
+    if (
+      searchText !== "" &&
+      !(searchQuantity === undefined) &&
+      !isNaN(searchQuantity)
+    ) {
+      console.log("this would be submitted");
+      props.add(searchText, searchQuantity);
       setSearchText("");
+      setSearchQuantity(undefined);
     }
   };
 
@@ -17,18 +28,23 @@ const SearchBar = (props: any) => {
     setSearchText(e.target.value);
   };
 
+  const onQuantityChange = (e: any) => {
+    setSearchQuantity(e.target.value);
+  };
+
   return (
     <Form>
-      <Form.Field>
-        <Form.Input
-          value={searchText}
-          onChange={onTextChange}
-          placeholder="Search for any NASDAQ stock ticker"
-        />
-        <Button onClick={onSubmit} color="blue" floated="right">
-          Add
-        </Button>
-      </Form.Field>
+      <Form.Input
+        onChange={onTextChange}
+        placeholder="Search for any NASDAQ stock ticker"
+      />
+      <Form.Input
+        onChange={onQuantityChange}
+        placeholder="Add quantity of the chosen stock"
+      />
+      <Button onClick={onSubmit} color="blue">
+        Add
+      </Button>
     </Form>
   );
 };
