@@ -16,15 +16,14 @@ interface stock {
 const stockReducer = (state = { stocks: [] as stock[] }, action: action) => {
   switch (action.type) {
     case "UPDATE":
-      let broken = false;
+      let StockExists = false;
       for (const stock of state.stocks) {
         if (action.payload.ticker === stock.ticker) {
-          console.log("this is the same: " + stock.ticker);
-          broken = true;
+          StockExists = true;
           break;
         }
       }
-      if (broken) {
+      if (StockExists) {
         break;
       }
       state = {

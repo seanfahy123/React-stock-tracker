@@ -10,6 +10,7 @@ interface IProps {
 
 const StockInfo: React.FC<IProps> = (props: IProps) => {
   const [apiData, setApiData] = useState();
+  const [doNotDisplay, setDoNotDisplay] = useState();
 
   const fetchData: Function = async (ticker: string) => {
     try {
@@ -19,13 +20,12 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
         }`
       );
 
-      console.log("API called");
-
       if (res.status === 200) {
         setApiData(res.data);
       }
     } catch {
       console.log("there has been an error");
+      setDoNotDisplay(true);
     }
   };
 
@@ -68,6 +68,8 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
         </Card.Content>
       </Card>
     );
+  } else if (doNotDisplay === true) {
+    return null;
   } else {
     return <Loading />;
   }

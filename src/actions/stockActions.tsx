@@ -1,4 +1,4 @@
-export default function updateStock(ticker: string, quantity: number) {
+export function updateStock(ticker: string, quantity: number) {
   return {
     type: "UPDATE",
     payload: {

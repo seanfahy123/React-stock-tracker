@@ -17,9 +17,10 @@ const SearchBar = (props: IProps) => {
       !(searchQuantity === undefined) &&
       !isNaN(searchQuantity)
     ) {
-      console.log("this would be submitted");
       props.add(searchText, searchQuantity);
     }
+    setSearchText("");
+    setSearchQuantity("");
   };
 
   const onTextChange = (e: any) => {
@@ -32,14 +33,22 @@ const SearchBar = (props: IProps) => {
 
   return (
     <Form>
-      <Form.Input
-        onChange={onTextChange}
-        placeholder="Search for any NASDAQ stock ticker"
-      />
-      <Form.Input
-        onChange={onQuantityChange}
-        placeholder="Add quantity of the chosen stock"
-      />
+      <Form.Field required>
+        <label>Stock ticker</label>
+        <Form.Input
+          value={searchText}
+          onChange={onTextChange}
+          placeholder="Search for any NASDAQ stock ticker"
+        />
+      </Form.Field>
+      <Form.Field required>
+        <label>Stock quantity</label>
+        <Form.Input
+          value={searchQuantity}
+          onChange={onQuantityChange}
+          placeholder="Add quantity of the chosen stock"
+        />
+      </Form.Field>
       <Button onClick={onSubmit} color="blue" fluid>
         Add
       </Button>

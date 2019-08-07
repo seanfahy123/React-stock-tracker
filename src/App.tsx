@@ -4,18 +4,15 @@ import SearchBar from "./components/SearchBar";
 import StockInfo from "./components/StockInfo";
 import { Container } from "semantic-ui-react";
 import { connect } from "react-redux";
-import updateStock from "./actions/stockActions";
+import { updateStock } from "./actions/stockActions";
 
 interface IProps {
   stocks: any;
-  updateStock: any;
+  updateStock: Function;
 }
 
 const App: React.FC<IProps> = (props: IProps) => {
   const add = (searchText: string, searchQuantity: number) => {
-    console.log(
-      "new stock, ticker: " + searchText + " quantity: " + searchQuantity
-    );
     props.updateStock(searchText, searchQuantity);
   };
 
@@ -29,7 +26,7 @@ const App: React.FC<IProps> = (props: IProps) => {
               <StockInfo
                 ticker={stock.ticker}
                 key={stock.ticker}
-                quantity={40}
+                quantity={stock.quantity}
               />
             ))}
           </div>
@@ -45,15 +42,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    updateStock: (ticker: string, quantity: number) => {
-      dispatch(updateStock(ticker, quantity));
-    }
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { updateStock }
 )(App);
