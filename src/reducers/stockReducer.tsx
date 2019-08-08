@@ -31,9 +31,19 @@ const stockReducer = (state = { stocks: [] as stock[] }, action: action) => {
         stocks: [...state.stocks, action.payload]
       };
       break;
+    case "DELETE":
+      const stocks = state.stocks.filter(stock => {
+        return stock.ticker !== action.payload.ticker;
+      });
+      state = {
+        ...state,
+        stocks
+      };
+      break;
     default:
       break;
   }
   return state;
 };
+
 export default stockReducer;

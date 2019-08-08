@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card } from "semantic-ui-react";
 import Loading from "./Loading";
+import { connect } from "react-redux";
+import { deleteStock } from "../actions/stockActions";
 
 interface IProps {
   ticker: string;
   quantity: number;
+  deleteStock: Function;
 }
 
 const StockInfo: React.FC<IProps> = (props: IProps) => {
@@ -40,7 +43,16 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
     return (
       <Card className="stock" fluid={true}>
         <Card.Content>
-          <Card.Header>{apiData.companyName}</Card.Header>
+          <Card.Header>
+            {apiData.companyName}
+            {"  "}
+            <i
+              className="fas fa-times"
+              onClick={() => {
+                props.deleteStock(props.ticker);
+              }}
+            />
+          </Card.Header>
           <div id="stockInfo">
             <div>
               <Card.Description>
@@ -75,4 +87,13 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
   }
 };
 
-export default StockInfo;
+const mapStateToProps = (state: any) => {
+  return {
+    stocks: state.stock.stocks
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { deleteStock }
+)(StockInfo);

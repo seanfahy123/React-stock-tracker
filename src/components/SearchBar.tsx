@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, forwardRef } from "react";
 import { Form, Button } from "semantic-ui-react";
 
 interface IProps {
@@ -8,6 +8,8 @@ interface IProps {
 const SearchBar = (props: IProps) => {
   const [searchText, setSearchText] = useState("");
   const [searchQuantity, setSearchQuantity] = useState();
+
+  const textBar = useRef<HTMLInputElement>();
 
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -19,7 +21,11 @@ const SearchBar = (props: IProps) => {
     ) {
       props.add(searchText, searchQuantity);
     }
-    setSearchText("");
+    if (textBar.current !== null && textBar.current !== undefined) {
+      textBar.current.value = "";
+    } else {
+      console.log("IT IS NULL");
+    }
     setSearchQuantity("");
   };
 
@@ -36,7 +42,7 @@ const SearchBar = (props: IProps) => {
       <Form.Field required>
         <label>Stock ticker</label>
         <Form.Input
-          value={searchText}
+          ref={textBar}
           onChange={onTextChange}
           placeholder="Search for any NASDAQ stock ticker"
         />

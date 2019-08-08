@@ -6,6 +6,13 @@ import store from "./store";
 
 require("dotenv").config();
 
+// store.dispatch({
+//   type: "DELETE",
+//   payload: {
+//     ticker: "aapl"
+//   }
+// });
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

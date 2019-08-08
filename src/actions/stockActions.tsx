@@ -7,3 +7,12 @@ export function updateStock(ticker: string, quantity: number) {
     }
   };
 }
+
+export function deleteStock(ticker: string) {
+  return {
+    type: "DELETE",
+    payload: {
+      ticker
+    }
+  };
+}

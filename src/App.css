@@ -24,3 +24,8 @@
   width: 60px;
   height: 60px;
 }
+
+.fa-times {
+  color: red;
+  /* background-color: red; */
+}

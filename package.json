@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.30",
+    "@types/jquery": "^3.3.31",
     "redux-devtools-extension": "^2.13.8"
   }
 }
