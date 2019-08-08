@@ -8,14 +8,16 @@
     "@types/react": "16.8.24",
     "@types/react-dom": "16.8.5",
     "@types/react-redux": "^7.1.1",
+    "accounting": "^0.4.1",
     "axios": "^0.19.0",
     "dotenv": "^8.0.0",
+    "is-string": "^1.0.4",
+    "object-assign": "^4.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.87.3",
     "typescript": "3.5.3"
   },
@@ -41,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@types/accounting": "^0.4.1",
     "@types/jquery": "^3.3.31",
     "redux-devtools-extension": "^2.13.8"
   }
