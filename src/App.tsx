@@ -5,6 +5,7 @@ import StockInfo from "./components/StockInfo";
 import { Container } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { updateStock } from "./actions/stockActions";
+import Title from "./components/Title";
 
 interface IProps {
   stocks: any;
@@ -20,6 +21,7 @@ const App: React.FC<IProps> = (props: IProps) => {
     return (
       <div id="main-content">
         <Container>
+          <Title />
           <SearchBar add={add} />
           <div id="stocks">
             {props.stocks.map((stock: any) => (

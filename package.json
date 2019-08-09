@@ -11,6 +11,7 @@
     "accounting": "^0.4.1",
     "axios": "^0.19.0",
     "dotenv": "^8.0.0",
+    "formik": "^1.5.8",
     "is-string": "^1.0.4",
     "object-assign": "^4.1.1",
     "react": "^16.8.6",
