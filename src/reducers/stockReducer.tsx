@@ -1,11 +1,6 @@
 interface action {
   type: string;
-  payload: payload;
-}
-
-interface payload {
-  ticker: string;
-  quantity: number;
+  payload: stock;
 }
 
 interface stock {

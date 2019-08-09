@@ -52,19 +52,6 @@ const SearchBar = (props: IProps) => {
         </Form>
       )}
     </Formik>
-    // <Form>
-    //   <Form.Field required>
-    //     <label>Stock ticker</label>
-    //     <TextBar ref={textInputRef} />
-    //   </Form.Field>
-    //   <Form.Field required>
-    //     <label>Stock quantity</label>
-    //     <Form.Input placeholder="Add quantity of the chosen stock" />
-    //   </Form.Field>
-    //   <Button onClick={onSubmit} color="blue" fluid>
-    //     Add
-    //   </Button>
-    // </Form>
   );
 };
 

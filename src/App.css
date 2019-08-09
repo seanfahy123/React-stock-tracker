@@ -1,16 +1,10 @@
-#main-content {
+.ui {
   padding: 1rem 0;
 }
 
 #stocks {
   width: 100%;
   margin-top: 2rem;
-}
-
-#stockInfo {
-  padding: 8px 20px;
-  display: flex;
-  justify-content: space-between;
 }
 
 #loading {
@@ -50,6 +44,12 @@ button {
 h1 {
   width: 100%;
   text-align: center;
+}
+
+#stockInfo {
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (min-width: 1100px) {

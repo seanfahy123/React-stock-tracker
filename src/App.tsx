@@ -19,21 +19,19 @@ const App: React.FC<IProps> = (props: IProps) => {
 
   if (props.stocks) {
     return (
-      <div id="main-content">
-        <Container>
-          <Title />
-          <SearchBar add={add} />
-          <div id="stocks">
-            {props.stocks.map((stock: any) => (
-              <StockInfo
-                ticker={stock.ticker}
-                key={stock.ticker}
-                quantity={stock.quantity}
-              />
-            ))}
-          </div>
-        </Container>
-      </div>
+      <Container>
+        <Title />
+        <SearchBar add={add} />
+        <div id="stocks">
+          {props.stocks.map((stock: any) => (
+            <StockInfo
+              ticker={stock.ticker}
+              key={stock.ticker}
+              quantity={stock.quantity}
+            />
+          ))}
+        </div>
+      </Container>
     );
   } else return null;
 };

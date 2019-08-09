@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card } from "semantic-ui-react";
-import Loading from "./Loading";
-import { connect } from "react-redux";
-import { deleteStock } from "../actions/stockActions";
 import accounting from "accounting";
+import { Card } from "semantic-ui-react";
+import { connect } from "react-redux";
+import Loading from "./Loading";
+import { deleteStock } from "../actions/stockActions";
 
 interface IProps {
   ticker: string;
@@ -27,7 +27,7 @@ const StockInfo: React.FC<IProps> = (props: IProps) => {
         setApiData(res.data);
       }
     } catch {
-      console.log("there has been an error");
+      // If there is an error, remove stock
       props.deleteStock(props.ticker);
     }
   };
